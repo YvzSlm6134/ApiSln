@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ApiSln.Domain": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Public\\ASP.Net\\WEB API\\ApiSln\\Presentation\\ApiSln.Api"
+    }
+  }
+}
