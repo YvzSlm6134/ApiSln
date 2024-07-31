@@ -1,4 +1,6 @@
-﻿using ApiSln.Persistence.Context;
+﻿using ApiSln.Application.İnterface.Repositories;
+using ApiSln.Persistence.Context;
+using ApiSln.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,8 @@ namespace ApiSln.Persistence
         {
             services.AddDbContext<AppDbContext>(opt =>
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
         }
 
     }
