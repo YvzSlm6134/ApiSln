@@ -1,4 +1,5 @@
 ﻿using ApiSln.Domain.Entitys;
+using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -13,7 +14,35 @@ namespace ApiSln.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
-            throw new NotImplementedException();
+            builder.Property(x=>x.Name).HasMaxLength(256);
+
+            Faker faker = new("tr");
+
+            Brand brand1 = new()
+            {
+
+                Id = 1,
+                Name = faker.Commerce.Department(),
+                CreatedDate = DateTime.Now,
+                İsDeleted = false
+            };
+            Brand brand2 = new()
+            {
+
+                Id = 2,
+                Name = faker.Commerce.Department(),
+                CreatedDate = DateTime.Now,
+                İsDeleted = false
+            };
+            Brand brand3 = new()
+            {
+
+                Id = 3,
+                Name = faker.Commerce.Department(),
+                CreatedDate = DateTime.Now,
+                İsDeleted = true
+            };
+            builder.HasData(brand1, brand2, brand3);
         }
     }
 }
