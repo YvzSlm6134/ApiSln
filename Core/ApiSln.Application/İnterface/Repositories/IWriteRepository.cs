@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace ApiSln.Application.İnterface.Repositories
 {
-    public interface IWriteRepository
+    public interface IWriteRepository<T> where T : class, IEntityBase,  new()
     {
-        
+        Task AddAsync(T entity);
+        Task AddRangeAsync(IList<T> entitites);
+
+        Task<T> UpdateAsync(T entity); // Veriyi update etmeye yarar.
+        Task<T> HardDeleteAsync (T entity); // veriyi tamaamen silmeye yarar.
+
     }
 }
