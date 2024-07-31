@@ -1,5 +1,8 @@
 ﻿using ApiSln.Domain.Entitys;
+<<<<<<< HEAD
 using Bogus;
+=======
+>>>>>>> ece8842 (devam edilcek)
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,6 +17,7 @@ namespace ApiSln.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
+<<<<<<< HEAD
             builder.Property(x=>x.Name).HasMaxLength(256);
 
             Faker faker = new("tr");
@@ -43,6 +47,9 @@ namespace ApiSln.Persistence.Configurations
                 İsDeleted = true
             };
             builder.HasData(brand1, brand2, brand3);
+=======
+            throw new NotImplementedException();
+>>>>>>> ece8842 (devam edilcek)
         }
     }
 }
