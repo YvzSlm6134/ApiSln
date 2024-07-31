@@ -19,8 +19,4 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\ApiSln.Persistence\ApiSln.Persistence.csproj" />
-  </ItemGroup>
-
 </Project>
