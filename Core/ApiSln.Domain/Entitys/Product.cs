@@ -15,7 +15,7 @@ namespace ApiSln.Domain.Entitys
         public  int BrandId { get; set; }
         public  decimal Price { get; set;}
         public  decimal Discount { get; set; }
-        public Brand brand { get; set; }
+        public Brand Brand { get; set; }
 
         public ICollection<Category> Categories { get; set; }
         //public required string ImagePath { get; set; }
