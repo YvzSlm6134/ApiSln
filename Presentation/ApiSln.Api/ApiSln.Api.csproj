@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ApiSln.Mapper\ApiSln.Mapper.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ApiSln.Persistence\ApiSln.Persistence.csproj" />
   </ItemGroup>
 
