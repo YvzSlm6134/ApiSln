@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using YoutubeApi.Domain.Entities;
 
 namespace ApiSln.Persistence.Context
 {
@@ -20,7 +21,7 @@ namespace ApiSln.Persistence.Context
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Detail> Details { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
