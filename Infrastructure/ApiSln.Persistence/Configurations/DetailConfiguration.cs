@@ -1,12 +1,12 @@
-<<<<<<< HEAD
+
 ﻿using ApiSln.Domain.Entitys;
 using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-=======
+
+
 ﻿using System;
->>>>>>> ece8842 (devam edilcek)
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ApiSln.Persistence.Configurations
 {
-<<<<<<< HEAD
+
     public class DetailConfiguration : IEntityTypeConfiguration<Detail>
     {
         public void Configure(EntityTypeBuilder<Detail> builder)
@@ -41,7 +41,7 @@ namespace ApiSln.Persistence.Configurations
                 İsDeleted = true
 
             };
-            Detail detail3= new()
+            Detail detail3 = new()
             {
                 Id = 3,
                 Title = faker.Lorem.Sentence(1),
@@ -53,9 +53,6 @@ namespace ApiSln.Persistence.Configurations
             };
             builder.HasData(detail1, detail2, detail3);
         }
-=======
-    internal class DetailConfiguration
-    {
->>>>>>> ece8842 (devam edilcek)
+
     }
 }

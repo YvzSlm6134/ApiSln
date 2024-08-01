@@ -1,12 +1,10 @@
-<<<<<<< HEAD
+
 ﻿using ApiSln.Domain.Entitys;
 using Bogus;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-=======
-﻿using System;
->>>>>>> ece8842 (devam edilcek)
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,23 +12,23 @@ using System.Threading.Tasks;
 
 namespace ApiSln.Persistence.Configurations
 {
-<<<<<<< HEAD
+
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             Faker faker = new("tr");
 
-             Product product1 = new()
+            Product product1 = new()
             {
-                 Id = 1,
-                 Title = faker.Commerce.ProductName(),
-                 Description = faker.Commerce.ProductDescription(),
-                 BrandId = 1,
-                 Discount = faker.Random.Decimal(0,10),
-                 Price = faker.Finance.Amount(10,1000),
-                 CreatedDate = DateTime.Now,
-                 İsDeleted = false
+                Id = 1,
+                Title = faker.Commerce.ProductName(),
+                Description = faker.Commerce.ProductDescription(),
+                BrandId = 1,
+                Discount = faker.Random.Decimal(0, 10),
+                Price = faker.Finance.Amount(10, 1000),
+                CreatedDate = DateTime.Now,
+                İsDeleted = false
             };
             Product product2 = new()
             {
@@ -45,9 +43,6 @@ namespace ApiSln.Persistence.Configurations
             };
             builder.HasData(product1, product2);
         }
-=======
-    internal class ProductConfiguration
-    {
->>>>>>> ece8842 (devam edilcek)
+
     }
 }

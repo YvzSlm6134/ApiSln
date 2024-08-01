@@ -19,9 +19,9 @@ namespace ApiSln.Domain.Entitys
             Name = name;
             Priorty = priorty;
         }
-        public required int ParentId { get; set; }
-        public required String Name { get; set; }
-        public required int Priorty  { get; set; }
+        public  int ParentId { get; set; }
+        public  String Name { get; set; }
+        public  int Priorty  { get; set; }
         public ICollection<Detail> Details { get; set; }
         public ICollection<Product> Products { get; set; }
 
