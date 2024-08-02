@@ -41,10 +41,16 @@ namespace ApiSln.Persistence.Repositories
         {
             await Task.Run(() => Table.Remove(entity));
             return entity;
+            
+        }
+        public async Task<T> HardDeleteRangeAsync(IList<T> entity)
+        {
+            await Task.Run(() => Table.RemoveRange(entity));
+            return (T)entity;
         }
 
-        
 
-        
+
+
     }
 }

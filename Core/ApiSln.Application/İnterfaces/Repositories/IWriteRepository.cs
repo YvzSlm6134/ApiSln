@@ -15,6 +15,7 @@ namespace ApiSln.Application.İnterface.Repositories
 
         Task<T> UpdateAsync(T entity); // Veriyi update etmeye yarar.
         Task<T> HardDeleteAsync (T entity); // veriyi tamaamen silmeye yarar.
+        Task<T> HardDeleteRangeAsync (IList<T> entity); 
 
     }
 }

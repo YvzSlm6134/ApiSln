@@ -19,11 +19,11 @@ namespace ApiSln.Application.Features.Products.Command.CreateProduct
             this.unitOfWork = unitOfWork;
         }
 
-         public  async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-             Product product = new(request.Title, request.Description, request.BrandId,request.Price, request.Discount);
+            Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
-           if(await unitOfWork.SaveAsync() > 0)
+            if (await unitOfWork.SaveAsync() > 0)
             {
                 foreach (var categoryId in request.CategoryIds)
                 {
