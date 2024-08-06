@@ -1,5 +1,6 @@
 ﻿using ApiSln.Application.İnterface.Repositories;
 using ApiSln.Application.İnterface.UnitOfWorks;
+using ApiSln.Domain.Entitys;
 using ApiSln.Persistence.Context;
 using ApiSln.Persistence.Repositories;
 using ApiSln.Persistence.UnitOfWorks;
@@ -26,6 +27,18 @@ namespace ApiSln.Persistence
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 2;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<AppDbContext>();
         }
 
     }

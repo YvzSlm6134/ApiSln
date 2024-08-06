@@ -1,4 +1,5 @@
 ﻿using ApiSln.Domain.Entitys;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using YoutubeApi.Domain.Entities;
 
 namespace ApiSln.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User,Role,Guid>
     {
          public AppDbContext() { }
 
