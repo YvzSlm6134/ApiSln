@@ -1,4 +1,5 @@
-﻿using ApiSln.Application.İnterface.UnitOfWorks;
+﻿using ApiSln.Application.Features.Products.Rules;
+using ApiSln.Application.İnterface.UnitOfWorks;
 using ApiSln.Domain.Entitys;
 using MediatR;
 using System;
@@ -13,15 +14,32 @@ namespace ApiSln.Application.Features.Products.Command.CreateProduct
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly ProductRules productRules;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork)
+        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
         {
             this.unitOfWork = unitOfWork;
+            this.productRules = productRules;
         }
 
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
+            IList<Product> products = await unitOfWork.GetReadRepository<Product>().GettAllAsync();
+
+            await productRules.ProductTitleMustNotBeSame(products, request.Title);
+
+            foreach (var item in products)
+            {
+                if (item.Title == request.Title) { }
+                
+            }
+
             Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
+
+
+
+
+
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);
             if (await unitOfWork.SaveAsync() > 0)
             {
