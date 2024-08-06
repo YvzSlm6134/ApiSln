@@ -1,4 +1,7 @@
-﻿using ApiSln.Application.Exceptions;
+﻿using ApiSln.Application.Beheviors;
+using ApiSln.Application.Exceptions;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -19,6 +22,12 @@ namespace ApiSln.Application
             services.AddTransient<ExceptionMiddleware>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly)); // bütün işlemnlere mediatr ı tanımlamış olduk.
+
+            services.AddValidatorsFromAssembly(assembly);
+            ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("tr");
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+
 
         }
 
