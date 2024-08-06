@@ -1,5 +1,6 @@
 using ApiSln.Persistence;
 using ApiSln.Application;
+using ApiSln.Infrastructure;
 using ApiSln.Mapper;
 using ApiSln.Application.Exceptions;
 
@@ -21,6 +22,7 @@ builder.Configuration
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 
