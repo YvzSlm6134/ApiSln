@@ -42,7 +42,7 @@ namespace ApiSln.Application.Exceptions
             List<string> errors = new() 
             {
                 $" Hata Mesajı : { exception.Message}",
-                $" Mesaj Açıklaması : { exception.InnerException?.ToString()}"
+                
             };
 
             return httpcontext.Response.WriteAsync(new ExceptionModel

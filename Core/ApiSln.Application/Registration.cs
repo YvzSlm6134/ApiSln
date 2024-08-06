@@ -1,5 +1,7 @@
-﻿using ApiSln.Application.Beheviors;
+﻿using ApiSln.Application.Bases;
+using ApiSln.Application.Beheviors;
 using ApiSln.Application.Exceptions;
+using ApiSln.Application.Features.Products.Rules;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,8 @@ namespace ApiSln.Application
             var assembly = Assembly.GetExecutingAssembly(); // isim hakları alır.
 
             services.AddTransient<ExceptionMiddleware>();
+            
+            services.AddRulseFromAssemblyContaining(assembly, typeof(BaseRules));
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly)); // bütün işlemnlere mediatr ı tanımlamış olduk.
 
@@ -29,6 +33,15 @@ namespace ApiSln.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
 
 
+        }
+
+        private static IServiceCollection AddRulseFromAssemblyContaining(this IServiceCollection services, Assembly assembly, Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t ).ToList();
+            foreach (var item in types)
+                services.AddTransient(item);
+            return services;
+            
         }
 
     }
