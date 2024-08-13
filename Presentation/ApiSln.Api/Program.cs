@@ -15,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 var env = builder.Environment;
 
 builder.Configuration
@@ -39,7 +42,7 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Description = "'Bearer yazýp boþluk býraktýktan sonra Token'ý Girebilirsiniz \r\n\r\n Örnreðin : \"Bearer  "
     });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement() 
     {
         {
             new OpenApiSecurityScheme

@@ -1,7 +1,10 @@
-﻿using ApiSln.Application.Features.Products.Rules;
+﻿using ApiSln.Application.Bases;
+using ApiSln.Application.Features.Products.Rules;
 using ApiSln.Application.İnterface.UnitOfWorks;
+using ApiSln.Application.İnterfaces.AutoMapper;
 using ApiSln.Domain.Entitys;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +14,12 @@ using YoutubeApi.Domain.Entities;
 
 namespace ApiSln.Application.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+    public class CreateProductCommandHandler : BaseHandler , IRequestHandler<CreateProductCommandRequest, Unit>
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ProductRules productRules;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
+        public CreateProductCommandHandler(ProductRules productRules, IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
             this.unitOfWork = unitOfWork;
             this.productRules = productRules;
