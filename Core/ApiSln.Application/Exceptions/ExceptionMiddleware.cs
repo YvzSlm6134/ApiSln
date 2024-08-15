@@ -22,7 +22,7 @@ namespace ApiSln.Application.Exceptions
             {
                 await HandleExceptionAsync(httpcontext, ex);
             }
-        }
+         }
 
         private static Task HandleExceptionAsync(HttpContext httpcontext, Exception exception) 
         {

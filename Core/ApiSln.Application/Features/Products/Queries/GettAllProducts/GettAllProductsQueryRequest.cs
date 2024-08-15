@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ApiSln.Application.Features.Products.Queries.GettAllProducts
 {
     public class GettAllProductsQueryRequest : IRequest<IList<GettAllProductsQueryResponse>>
-        
+
     {
     }
 }

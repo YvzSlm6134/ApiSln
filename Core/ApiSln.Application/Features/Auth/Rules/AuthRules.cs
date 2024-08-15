@@ -15,9 +15,11 @@ namespace ApiSln.Application.Features.Auth.Rules
         {
             if (user is not null) throw new UserAllreadyExistException();
             return Task.CompletedTask;
-            {
-                
-            }
+        }
+        public Task EmailOrPasswordShouldNotBeInvalid(User? user, bool checkpassword)
+        {
+            if (user is null || !checkpassword) throw new EmailOrPasswordShouldNotBeInvalidException();
+            return Task.CompletedTask;
         }
     }
 }

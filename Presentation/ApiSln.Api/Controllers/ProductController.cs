@@ -3,6 +3,7 @@ using ApiSln.Application.Features.Products.Command.DeleteProduct;
 using ApiSln.Application.Features.Products.Command.UpdateProduct;
 using ApiSln.Application.Features.Products.Queries.GettAllProducts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace ApiSln.Api.Controllers
             this.mediator = mediator;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GettALlProducts()
         {
             var response = await mediator.Send(new GettAllProductsQueryRequest());
